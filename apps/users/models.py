@@ -6,7 +6,7 @@ from apps.users.managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    name = models.CharField(max_length=100, blank=True)
+    name = models.CharField(default="Anonymous", max_length=100, blank=True)
     email = models.EmailField(unique=True, db_index=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)

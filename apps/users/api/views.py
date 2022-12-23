@@ -47,7 +47,6 @@ class UserViewSet(viewsets.ModelViewSet):
         email = request.data.get("email")
         password = request.data.get("password")
         name = request.data.get("name")
-
         user = register_user_service(email, password, name)
         if not user:
             return Response({"success": False, "err": "Invalid password or email!"})
