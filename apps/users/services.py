@@ -19,3 +19,9 @@ def register_user_service(email, password, name):
 
 def logout_user_service(user):
     Token.objects.filter(user=user).delete()
+
+
+def add_token_to_user_serializer_selector(data, user):
+    token, _ = Token.objects.get_or_create(user=user)
+    data['token'] = token.key
+    return data
